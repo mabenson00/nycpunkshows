@@ -1,0 +1,25 @@
+<%= form_for(concert) do |f| %>
+  Date: <%= f.text_field :date %> <br />
+  Time: <%= f.text_field :time %> <br />
+  <%= f.fields_for :venue do |venue_form| %>
+    Venue: <%= venue_form.text_field :name %> <br />
+  <% end %>
+  <%= f.fields_for :bands do |band_form| %>
+    Band: <%= band_form.text_field :name %> <br />
+  <% end %>
+  <% if concert.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+      <ul>
+      <% concert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
