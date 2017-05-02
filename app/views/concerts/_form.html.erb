@@ -1,14 +1,5 @@
-<%= form_for(concert) do |f| %>
-  Date: <%= f.text_field :date %> <br />
-  Time: <%= f.text_field :time %> <br />
-  <%= f.fields_for :venue do |venue_form| %>
-    Venue: <%= venue_form.text_field :name %> <br />
-  <% end %>
-  <%= f.fields_for :bands do |band_form| %>
-    Band: <%= band_form.text_field :name %> <br />
-  <% end %>
-  <% if concert.errors.any? %>
-    <div id="error_explanation">
+<% if concert.errors.any? %>
+  <div id="error_explanation">
       <h2><%= pluralize(concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
 
       <ul>
@@ -16,8 +7,18 @@
         <li><%= message %></li>
       <% end %>
       </ul>
-    </div>
+  </div>
   <% end %>
+<%= form_for(concert) do |f| %>
+  
+  Date: <%= f.date_select :date, {order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: Date.today.year, end_year: Date.today.year + 2}, {required: true} %> <br />
+  Time: <%= f.text_field :time %> <br />
+  Venue: <%= f.collection_select :venue_id, Venue.order(:name),:id,:name, include_blank: true %> <br />
+  <%= f.fields_for :bands do |band_form| %>
+    Band: <%= band_form.text_field :name %> <br />
+  <% end %>
+
+    
 
   <div class="actions">
     <%= f.submit %>

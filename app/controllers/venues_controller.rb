@@ -25,7 +25,6 @@ class VenuesController < ApplicationController
   # POST /venues.json
   def create
     @venue = Venue.new(venue_params)
-    console.log("venue created")*100
     respond_to do |format|
       if @venue.save
         format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
@@ -69,6 +68,6 @@ class VenuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def venue_params
-      params.fetch(:venue, {})
+      params.require(:venue).permit(:name)
     end
 end
