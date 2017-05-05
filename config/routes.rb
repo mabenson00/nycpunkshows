@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lineups
   resources :venues
   resources :bands
   resources :concerts

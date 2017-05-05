@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501154842) do
+ActiveRecord::Schema.define(version: 20170502181126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,6 @@ ActiveRecord::Schema.define(version: 20170501154842) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "bands_concerts", id: false, force: :cascade do |t|
-    t.integer "band_id",    null: false
-    t.integer "concert_id", null: false
-    t.index ["band_id", "concert_id"], name: "index_bands_concerts_on_band_id_and_concert_id", using: :btree
-  end
-
   create_table "concerts", force: :cascade do |t|
     t.date     "date"
     t.string   "time"
@@ -34,6 +28,14 @@ ActiveRecord::Schema.define(version: 20170501154842) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["venue_id"], name: "index_concerts_on_venue_id", using: :btree
+  end
+
+  create_table "lineups", force: :cascade do |t|
+    t.integer  "concert_id"
+    t.integer  "band_id"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "venues", force: :cascade do |t|

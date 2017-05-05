@@ -1,3 +1,6 @@
 class Band < ApplicationRecord
-	has_and_belongs_to_many :concerts
+	has_many :lineups
+	has_many :concerts, :through => :lineups
+	
+	
 end
