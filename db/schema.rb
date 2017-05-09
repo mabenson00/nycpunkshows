@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20170502181126) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "bands_concerts", id: false, force: :cascade do |t|
+    t.integer "band_id",    null: false
+    t.integer "concert_id", null: false
+    t.index ["band_id", "concert_id"], name: "index_bands_concerts_on_band_id_and_concert_id", using: :btree
+  end
+
   create_table "concerts", force: :cascade do |t|
     t.date     "date"
     t.string   "time"

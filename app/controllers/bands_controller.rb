@@ -10,6 +10,8 @@ class BandsController < ApplicationController
   # GET /bands/1
   # GET /bands/1.json
   def show
+    @concerts = @band.concerts
+    p @concerts
   end
 
   # GET /bands/new
