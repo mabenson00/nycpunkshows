@@ -1,6 +1,6 @@
 class LineupsController < ApplicationController
   before_action :set_lineup, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authorize
   # GET /lineups
   # GET /lineups.json
   def index
