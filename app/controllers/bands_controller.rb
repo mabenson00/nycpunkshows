@@ -1,6 +1,6 @@
 class BandsController < ApplicationController
   before_action :set_band, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize
+  before_filter :authorize, except: [:show, :index]
   # GET /bands
   # GET /bands.json
   def index
