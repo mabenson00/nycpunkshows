@@ -1,10 +1,13 @@
 class ConcertsController < ApplicationController
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
   before_filter :authorize, except: [:show, :index]
+  include ConcertsHelper
+
   # GET /concerts
   # GET /concerts.json
   def index
     @concerts = Concert.all
+    @concerts = return_future(@concerts)
   end
 
   # GET /concerts/1
