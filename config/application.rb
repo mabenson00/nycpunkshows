@@ -24,7 +24,7 @@ module Nycpunkshows
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin' => 'http://localhost:8000',
+    'Access-Control-Allow-Origin' => 'http://104.236.47.102:3000',
     'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
   }
   end
