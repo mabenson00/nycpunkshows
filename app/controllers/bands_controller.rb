@@ -5,7 +5,7 @@ class BandsController < ApplicationController
   # GET /bands.json
   def index
     @bands = Band.joins(:concerts).where("concerts.date >= ?", Date.today)
-    @concerts = @band.concerts.where("date >= ?", Date.today)
+   
   end
 
   # GET /bands/1
