@@ -4,13 +4,13 @@ class BandsController < ApplicationController
   # GET /bands
   # GET /bands.json
   def index
-    @bands = Band.joins(:concerts).where("concerts.date > ?", Date.today)
+    @bands = Band.joins(:concerts).where("concerts.date >= ?", Date.today)
   end
 
   # GET /bands/1
   # GET /bands/1.json
   def show
-    @concerts = @band.concerts
+    @concerts = @band.concerts.where("date >= ?", Date.today)
   end
 
   # GET /bands/new

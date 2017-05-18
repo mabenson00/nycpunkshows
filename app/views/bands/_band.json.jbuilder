@@ -6,4 +6,4 @@
 # # json.concerts @concerts
 json.id band.id
 json.name band.name
-json.concerts band.concerts, :venue, :date, :time, :bands
+json.concerts @concerts, :venue, :date, :time, :bands
