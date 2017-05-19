@@ -17,6 +17,7 @@ class Concert < ApplicationRecord
 			bands.each do |band|
 				print_bands << band.name 
 			end
+			
 		print_bands.join(", ")
 	end
 	def autosave_associated_records_for_venue 
@@ -51,4 +52,6 @@ class Concert < ApplicationRecord
 			link_url = doc.xpath('//*[@id="pgBd"]/div[1]/div[1]/div/ul/li[1]/div/div[2]/a/@href').first.value
 			link_url = link_url[/^[^\?]*/]
 		end
+
+		
 end

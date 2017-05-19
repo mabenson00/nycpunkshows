@@ -1,11 +1,15 @@
 class BandsController < ApplicationController
   before_action :set_band, only: [:show, :edit, :update, :destroy]
   before_filter :authorize, except: [:show, :index]
+  include BandsHelper
   # GET /bands
   # GET /bands.json
   def index
     @bands = Band.joins(:concerts).where("concerts.date >= ?", Date.today).distinct
-
+    bands.each do |band|
+        bandcamp = get_old_bandcamps(band.name)
+        band.bandcamp = bandcamp
+    end
   end
 
   # GET /bands/1
