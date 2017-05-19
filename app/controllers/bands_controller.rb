@@ -7,7 +7,6 @@ class BandsController < ApplicationController
   def index
     @bands = Band.joins(:concerts).where("concerts.date >= ?", Date.today).distinct
     @bands.each do |band|
-        bandcamp = get_old_bandcamps(band.name)
         band.bandcamp = bandcamp
     end
   end
