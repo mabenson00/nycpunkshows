@@ -5,5 +5,5 @@
 # json.(band, :id, :name, :concerts, :created_at, :updated_at)
 # # json.concerts @concerts
 json.id band.id
-json.name band.name
+json.name band.name, band.bandcamp
 json.concerts band.future_concerts, :venue, :date, :time, :bands

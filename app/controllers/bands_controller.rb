@@ -27,7 +27,7 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(band_params)
-
+    bandcamp = get_bandcamp(@band.name)
     respond_to do |format|
       if @band.save
         format.html { redirect_to @band, notice: 'Band was successfully created.' }
