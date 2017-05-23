@@ -13,12 +13,12 @@ class Concert < ApplicationRecord
 	
 	def get_bands
 		bands = Band.select('bands.name', 'lineups.concert_id', 'lineups.id').joins(:lineups).where('lineups.concert_id' => self.id).order('lineups.id')
-		print_bands =[]
-			bands.each do |band|
-				print_bands << band.name 
-			end
+		bands = bands.map{|band| band.name}
+		# 	bands.each do |band|
+		# 		print_bands << band.name 
+		# 	end
 			
-		print_bands.join(", ")
+		bands.join(", ")
 	end
 	def autosave_associated_records_for_venue 
 		if new_venue = Venue.find_by_name(venue.name)
